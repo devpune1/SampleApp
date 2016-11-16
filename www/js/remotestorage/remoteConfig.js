@@ -58,11 +58,17 @@ console.log(userDatabaseName);
 if(object !== true){
 
 
+if(object !== true){
+
  db.executeSql('SELECT * FROM  userData').then (function(results) {
 
  if(results.length){
 
+<<<<<<< HEAD
  userEncryptionKey =  sessionStorage.getItem("randomID") ;
+=======
+
+>>>>>>> 2edd104f765dea188f91cbe53b4b23f444677a31
 
         for(numberOfItem = 0 ; numberOfItem < results.length ; numberOfItem++) {
 
@@ -120,6 +126,12 @@ else {
 
 
   db.put('userData',object).done(function(){
+<<<<<<< HEAD
+=======
+    console.log("entered");
+
+   });
+>>>>>>> 2edd104f765dea188f91cbe53b4b23f444677a31
 
     console.log("entered");
 
@@ -135,12 +147,16 @@ else {
 
 
 });
+}
 
 }
+<<<<<<< HEAD
 
  }
 
 
+=======
+>>>>>>> 2edd104f765dea188f91cbe53b4b23f444677a31
 
 
     function clearRemoteStorage(){
