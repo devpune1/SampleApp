@@ -1,4 +1,4 @@
-
+console.log(document.querySelector('#myNavigator').getPages());
 
 document.addEventListener('init', function(event) {
 
