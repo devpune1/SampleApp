@@ -1,6 +1,6 @@
-// Enable change events for changes in the same browser window
 
-function load(userDatabaseName){
+
+function load(userDatabaseName) {
 
   console.log(userDatabaseName);
 
@@ -15,31 +15,23 @@ remoteStorage.displayWidget();
 remoteStorage.bicService.init();
 
 remoteStorage.bicService.getAllData().then(function(transactions){
-<<<<<<< HEAD
+
 //clearRemoteStorage();
 for(var id in transactions){
 
 
 
-  console.log("value   reb="+transactions[id]);
-
-=======
-
-for(var id in transactions){
-
-
-
      //clearRemoteStorage(transactions[id].date);
->>>>>>> f41d697d57dffe7f99f93dbe4c082b2edb3060a1
     removeDuplicate(transactions[id],userDatabaseName);
 
 
-  }
+
+
+}
+
 
 
 });
-
-
 
 }
 
@@ -63,49 +55,38 @@ console.log(userDatabaseName);
 
  var db =  getConnectionObject(userDatabaseName);
 
-
- db.executeSql('SELECT * FROM  userData').then (function(results) {
-
-
-<<<<<<< HEAD
 if(object !== true){
 
 
- if(results.length  ){
-=======
- userEncryptionKey =  sessionStorage.getItem("randomID") ;
-
+ db.executeSql('SELECT * FROM  userData').then (function(results) {
 
  if(results.length){
 
-     // createTableHeader();
-
->>>>>>> f41d697d57dffe7f99f93dbe4c082b2edb3060a1
-
+ userEncryptionKey =  sessionStorage.getItem("randomID") ;
 
         for(numberOfItem = 0 ; numberOfItem < results.length ; numberOfItem++) {
 
-<<<<<<< HEAD
+
                 console.log("value ="+object);
-=======
+
                 console.log(object);
->>>>>>> f41d697d57dffe7f99f93dbe4c082b2edb3060a1
+
 
 
                   userDataObject  = results[numberOfItem];
 
 
-<<<<<<< HEAD
-                    if(   generateHashKey(userDataObject.userinfo) !== generateHashKey(object.userinfo)){
-=======
-                    if(generateHashKey(userDataObject.userinfo) !== generateHashKey(object.userinfo)){
->>>>>>> f41d697d57dffe7f99f93dbe4c082b2edb3060a1
+
+
+
+if(generateHashKey(userDataObject.userinfo) !== generateHashKey(object.userinfo)){
+
 
                              count = count + 1;
 
 
-                    }
-                    else{
+}
+else {
 
 
                         count = 0;
@@ -122,13 +103,9 @@ if(object !== true){
            if(count){
 
 
-<<<<<<< HEAD
-                  db.put('userData',object).done(function(){
-                          console.log("entered");
-=======
+
                   db.put('userData',userDataObject).done(function(){
 
->>>>>>> f41d697d57dffe7f99f93dbe4c082b2edb3060a1
                    });
 
 
@@ -143,11 +120,10 @@ if(object !== true){
 
 
   db.put('userData',object).done(function(){
-<<<<<<< HEAD
+
     console.log("entered");
+
    });
-
-
 
 
 
@@ -159,21 +135,12 @@ if(object !== true){
 
 
 });
-=======
 
-   });
-
-
+}
 
  }
 
->>>>>>> f41d697d57dffe7f99f93dbe4c082b2edb3060a1
 
-
-
-
-<<<<<<< HEAD
-    }
 
 
     function clearRemoteStorage(){
@@ -192,18 +159,6 @@ if(object !== true){
 
 
       });
-=======
-
-
-}, function(e) {
-
-  throw e;
-
-
-});
-
-
-
 
     }
 
@@ -211,6 +166,6 @@ if(object !== true){
     function clearRemoteStorage(timeStamp){
 
         remoteStorage.bicService.removeUserData(timeStamp);
->>>>>>> f41d697d57dffe7f99f93dbe4c082b2edb3060a1
+
 
     }
