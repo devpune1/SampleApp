@@ -1,24 +1,8 @@
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 document.addEventListener('init', function(event) {
 
-myNavigator.pushPage('registration.html',{data: {title: 'Login Page'}});
-
+   sessionStorage.setItem("count",0);
 
   var page = event.target;
 
@@ -27,11 +11,8 @@ myNavigator.pushPage('registration.html',{data: {title: 'Login Page'}});
     page.querySelector('#register').onclick = function() {
 
 
+      document.querySelector('#myNavigator').pushPage('registration.html', {data: {title: 'Register'}});
 
-
-
-    myNavigator.pushPage.pushPage('registration.html', {data: {title: 'Register'}});
-     userdatepicker();
 
 
 
@@ -56,6 +37,66 @@ myNavigator.pushPage('registration.html',{data: {title: 'Login Page'}});
 
 }
 });
+
+
+
+
+
+$(window).bind('unload',function(){
+
+     //save info somewhere
+
+    reloadPage();
+
+});
+
+
+
+
+
+
+
+
+function closeApp(){
+
+
+  var object = document.getElementById("myNavigator").topPage.data;
+
+
+  document.getElementById("myNavigator").popPage(object);
+
+
+}
+
+function reloadPage(){
+
+
+
+
+var object = document.getElementById("myNavigator").topPage.data;
+
+if(object){
+console.log("herer if");
+         document.getElementById("myNavigator").pushPage("login.html",{data: {title: 'Login'}});
+
+
+}else{
+
+console.log("herer else");
+document.getElementById("myNavigator").pushPage(object);
+}
+
+
+}
+
+
+
+
+
+
+
+
+
 
 
 

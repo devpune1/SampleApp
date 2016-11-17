@@ -1,9 +1,8 @@
-ons.ready(function() {
-  // Onsen UI is now initialized
-  $( function() {
-      $( "#userDate" ).datepicker();
-    } );
-});
+
+
+
+
+
 
 
 function getData(className){
