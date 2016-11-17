@@ -149,27 +149,15 @@ else {
 
       for(var id in transactions){
 
+          if(transactions[id].date !== undefined){
 
+                remoteStorage.bicService.removeUserData(transactions[id].date);
 
-        remoteStorage.bicService.removeUserData(transactions[id].date);
-
-
+          }
 
         }
-
-
       });
 
     }
 
-
-    function clearRemoteStorage(timeStamp){
-
-        remoteStorage.bicService.removeUserData(timeStamp);
-
-
-    }
-
-
-
-    
+    document.getElementById("clearremotestorage").addEventListener("click", clearRemoteStorage);

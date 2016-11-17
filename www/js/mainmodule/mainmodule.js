@@ -776,9 +776,3 @@ function deleteRecord(userTable,userId){
                        reloadTable();
 
 }
-
-function closeApp(){
-
-
-
-}
