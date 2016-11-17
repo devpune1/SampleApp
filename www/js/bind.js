@@ -1,12 +1,23 @@
-function userdatepicker(){
 
-$(function() {
-    $("#userDate").on('click',function() {
-      alert()
-    });
-});
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 document.addEventListener('init', function(event) {
+
+myNavigator.pushPage('registration.html',{data: {title: 'Login Page'}});
 
 
   var page = event.target;
@@ -19,7 +30,7 @@ document.addEventListener('init', function(event) {
 
 
 
-      document.querySelector('#myNavigator').pushPage('registration.html', {data: {title: 'Register'}});
+    myNavigator.pushPage.pushPage('registration.html', {data: {title: 'Register'}});
      userdatepicker();
 
 

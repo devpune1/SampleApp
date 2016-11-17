@@ -149,7 +149,7 @@ else {
 
       for(var id in transactions){
 
-          if(transactions[id].date !== undefined){
+          if(transactions[id]){
 
                 remoteStorage.bicService.removeUserData(transactions[id].date);
 
@@ -160,4 +160,4 @@ else {
 
     }
 
-    document.getElementById("clearremotestorage").addEventListener("click", clearRemoteStorage);
+    //document.getElementById("clearremotestorage").addEventListener("click", clearRemoteStorage);
