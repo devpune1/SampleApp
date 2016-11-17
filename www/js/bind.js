@@ -40,23 +40,6 @@ document.addEventListener('init', function(event) {
 
 
 
-
-
-$(window).bind('unload',function(){
-
-     //save info somewhere
-
-    reloadPage();
-
-});
-
-
-
-
-
-
-
-
 function closeApp(){
 
 
@@ -73,17 +56,19 @@ function reloadPage(){
 
 
 
-var object = document.getElementById("myNavigator").topPage.data;
+var object = document.getElementById("myNavigator").topPage;
+
 
 if(object){
-console.log("herer if");
-         document.getElementById("myNavigator").pushPage("login.html",{data: {title: 'Login'}});
+
+    document.getElementById("myNavigator").pushPage(object.name,{data: {title: 'Registration'}});
+console.log(object.name);
+
+}
+else{
 
 
-}else{
-
-console.log("herer else");
-document.getElementById("myNavigator").pushPage(object);
+   document.getElementById("myNavigator").pushPage("login.html",{data: {title: 'Login'}});
 }
 
 
