@@ -1,5 +1,11 @@
+function userdatepicker(){
 
-
+$(function() {
+    $("#userDate").on('click',function() {
+      alert()
+    });
+});
+}
 document.addEventListener('init', function(event) {
 
 
@@ -10,8 +16,11 @@ document.addEventListener('init', function(event) {
     page.querySelector('#register').onclick = function() {
 
 
-      document.querySelector('#myNavigator').pushPage('registration.html', {data: {title: 'Register'}});
 
+
+
+      document.querySelector('#myNavigator').pushPage('registration.html', {data: {title: 'Register'}});
+     userdatepicker();
 
 
 
