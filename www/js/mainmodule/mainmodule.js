@@ -1,6 +1,5 @@
 
 
- //reloadTable();
 
 
 
@@ -774,5 +773,18 @@ function deleteRecord(userTable,userId){
 
      db.remove(userTable,userId);
                        reloadTable();
+
+}
+
+
+function closeApplication(){
+
+   var db =  getConnectionObject(sessionStorage.getItem('userDatabaseName'));
+   var object = document.getElementById("myNavigator").topPage.data;
+
+   document.getElementById("myNavigator").popPage(object);
+   db.close();
+
+
 
 }

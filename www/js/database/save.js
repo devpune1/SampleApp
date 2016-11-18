@@ -1,10 +1,5 @@
 
 
-
-
-
-
-
 function getData(className){
 
      var elements = document.getElementsByClassName(className);
@@ -35,14 +30,6 @@ function saveRecords() {
     var userArray = ""
 
 
-
-
-
-
-
-
-
-
       userData = getData("registerinput");
 
       userArray = getRegistrationInputId();
@@ -52,7 +39,7 @@ function saveRecords() {
 
 
 
-    userObject = createUserDataObject(userData,userData[5],userArray);
+        userObject = createUserDataObject(userData,userData[5],userArray);
 
 
 
@@ -61,7 +48,7 @@ if(userData[5] === userData[6]) {
           console.log("entered "+userData[1]);
           console.log("entered "+userData[5]);
 
-userObject["key"] = generateHashKey(userData[1]+userData[5]);
+           userObject["key"] = generateHashKey(userData[1]+userData[5]);
 
           dbObject.put('record',userObject).done( function() {
 
@@ -70,27 +57,22 @@ userObject["key"] = generateHashKey(userData[1]+userData[5]);
 
      });
 
-clearInputs("registerinput");
-  document.querySelector('#myNavigator').pushPage('mainmodule.html', {data: {title: 'Main Application'}});
+     clearInputs("registerinput");
 
 
-          sessionStorage.setItem("randomID",generateHashKey(userData[5]));
-
-          sessionStorage.setItem("userDatabaseName",generateHashKey(userData[1]));
-
-          defineUserModule();
-
-          load(generateHashKey(userData[1]));
+      document.querySelector('#myNavigator').pushPage('mainmodule.html', {data: {title: 'Main Application'}});
 
 
+            sessionStorage.setItem("randomID",generateHashKey(userData[5]));
 
+            sessionStorage.setItem("userDatabaseName",generateHashKey(userData[1]));
 
+            defineUserModule();
 
-
+            load(generateHashKey(userData[1]));
 
     }
-
-else {
+else{
 
             callErrorPopOver("registerinput",6,"Password Do not Match")
 
@@ -111,19 +93,13 @@ else {
 
 function clearInputs(className) {
 
-      var elements = document.getElementsByClassName(className);
+        var elements = document.getElementsByClassName(className);
 
-      for (var items = 0; items < elements.length; items++) {
+        for (var items = 0; items < elements.length; items++) {
 
-       elements[items].value ="";
+                elements[items].value ="";
 
     }
-
-
-
-
-
-
 
 }
 

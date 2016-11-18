@@ -2,7 +2,7 @@
 
 document.addEventListener('init', function(event) {
 
-   sessionStorage.setItem("count",0);
+
 
   var page = event.target;
 
@@ -10,7 +10,7 @@ document.addEventListener('init', function(event) {
 
     page.querySelector('#register').onclick = function() {
 
-
+      sessionStorage.setItem("page","registration.html");
       document.querySelector('#myNavigator').pushPage('registration.html', {data: {title: 'Register'}});
 
 
@@ -40,13 +40,52 @@ document.addEventListener('init', function(event) {
 
 
 
+
+
+$(window).bind('load',function(){
+  var count = 0;
+
+
+document.getElementById("myNavigator").pushPage("login.html",{data :{ title : "Login"}});
+
+});
+
+
+
+
+$(window).bind('unload',function(){
+console.log("asdasd");
+
+var object = document.getElementById("myNavigator").topPage.data;
+
+
+document.getElementById("myNavigator").resetToPage(object, {data :{ title : "Register"}});
+
+});
+
+
+
+
+
+
+
+
 function closeApp(){
 
 
   var object = document.getElementById("myNavigator").topPage.data;
 
+console.log( object)
+  document.getElementById("myNavigator").pushPage(object);
 
-  document.getElementById("myNavigator").popPage(object);
+
+}
+
+function loadPage(){
+
+
+   document.getElementById("myNavigator").pushPage("login.html",{data: {title: 'Login'}});
+
 
 
 }
@@ -54,26 +93,11 @@ function closeApp(){
 function reloadPage(){
 
 
+   document.getElementById("myNavigator").pushPage('registration.html',{data: {title: 'Register'}});
 
-
-var object = document.getElementById("myNavigator").topPage;
-
-
-if(object){
-
-    document.getElementById("myNavigator").pushPage(object.name,{data: {title: 'Registration'}});
-console.log(object.name);
-
-}
-else{
-
-
-   document.getElementById("myNavigator").pushPage("login.html",{data: {title: 'Login'}});
-}
 
 
 }
-
 
 
 
@@ -159,6 +183,7 @@ if(name.length){
        if(validateCredential( userKey ,name)){
 
   document.querySelector('#modal').show();
+     sessionStorage.setItem("page","mainmodule.html");
   sessionStorage.setItem("randomID",generateHashKey(userPassword));
 
   sessionStorage.setItem("userDatabaseName",generateHashKey(userName));
