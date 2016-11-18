@@ -11,6 +11,7 @@ document.addEventListener('init', function(event) {
     page.querySelector('#register').onclick = function() {
 
       sessionStorage.setItem("page","registration.html");
+
       document.querySelector('#myNavigator').pushPage('registration.html', {data: {title: 'Register'}});
 
 
@@ -43,10 +44,15 @@ document.addEventListener('init', function(event) {
 
 
 $(window).bind('load',function(){
-  var count = 0;
+  var object = document.getElementById("myNavigator").topPage;
+
+if(!object || object == null){
+  console.log("login123123");
+  document.getElementById("myNavigator").pushPage("login.html",{data :{ title : "Login"}});
 
 
-document.getElementById("myNavigator").pushPage("login.html",{data :{ title : "Login"}});
+}
+
 
 });
 
@@ -54,12 +60,22 @@ document.getElementById("myNavigator").pushPage("login.html",{data :{ title : "L
 
 
 $(window).bind('unload',function(){
+
 console.log("asdasd");
 
-var object = document.getElementById("myNavigator").topPage.data;
+var object = sessionStorage.getItem("page");
 
 
-document.getElementById("myNavigator").resetToPage(object, {data :{ title : "Register"}});
+if(object ){
+
+document.getElementById("myNavigator").pushPage(object, {data :{ title : "Register"}});
+
+}
+else{
+
+document.getElementById("myNavigator").pushPage("logint.html", {data :{ title : "Login"}});
+
+}
 
 });
 
@@ -76,7 +92,7 @@ function closeApp(){
   var object = document.getElementById("myNavigator").topPage.data;
 
 console.log( object)
-  document.getElementById("myNavigator").pushPage(object);
+  document.getElementById("myNavigator").popPage(object);
 
 
 }
@@ -182,15 +198,15 @@ if(name.length){
 
        if(validateCredential( userKey ,name)){
 
-  document.querySelector('#modal').show();
+  //document.querySelector('#modal').show();
      sessionStorage.setItem("page","mainmodule.html");
-  sessionStorage.setItem("randomID",generateHashKey(userPassword));
+   sessionStorage.setItem("randomID",generateHashKey(userPassword));
 
-  sessionStorage.setItem("userDatabaseName",generateHashKey(userName));
+   sessionStorage.setItem("userDatabaseName",generateHashKey(userName));
 
-  defineUserModule();
+   defineUserModule();
 
-  load(generateHashKey(userName));
+   load(generateHashKey(userName));
 
 
        document.querySelector('#myNavigator').pushPage('mainmodule.html', {data: {title: 'Main Application'}});

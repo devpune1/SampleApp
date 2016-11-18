@@ -7,8 +7,8 @@ window.fn.open = function() {
 };
 
 window.fn.load = function(page) {
-  var content = document.getElementById('content');
-  var menu = document.getElementById('menu');
+  var content = document.getElementById('myNavigator');
+
   content.load(page)
-    .then(menu.close.bind(menu));
+  
 };

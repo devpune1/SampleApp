@@ -781,9 +781,10 @@ function closeApplication(){
 
    var db =  getConnectionObject(sessionStorage.getItem('userDatabaseName'));
    var object = document.getElementById("myNavigator").topPage.data;
-
-   document.getElementById("myNavigator").popPage(object);
    db.close();
+   remoteStorage.displayWidget(false);
+   document.getElementById("myNavigator").popPage(object);
+
 
 
 
