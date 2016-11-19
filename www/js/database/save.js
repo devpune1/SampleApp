@@ -62,7 +62,8 @@ if(userData[5] === userData[6]) {
 
       document.querySelector('#myNavigator').pushPage('mainmodule.html', {data: {title: 'Main Application'}});
 
-
+            sessionStorage.setItem("CurrentPage","mainmodule.html");
+         sessionStorage.clickcount++;
             sessionStorage.setItem("randomID",generateHashKey(userData[5]));
 
             sessionStorage.setItem("userDatabaseName",generateHashKey(userData[1]));

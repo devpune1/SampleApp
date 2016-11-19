@@ -1,4 +1,4 @@
-
+/*
 window.fn = {};
 
 window.fn.open = function() {
@@ -10,5 +10,6 @@ window.fn.load = function(page) {
   var content = document.getElementById('myNavigator');
 
   content.load(page)
-  
+
 };
+*/

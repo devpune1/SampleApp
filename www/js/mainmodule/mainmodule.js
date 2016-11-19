@@ -780,10 +780,19 @@ function deleteRecord(userTable,userId){
 function closeApplication(){
 
    var db =  getConnectionObject(sessionStorage.getItem('userDatabaseName'));
-   var object = document.getElementById("myNavigator").topPage.data;
+
+
+  // var object = document.getElementById('myNavigator').topPage.data;
+
+ //document.getElementById('myNavigator').popPage(object);
+
+ document.getElementById('remotestorage-widget').style.display ='none';
+sessionStorage.removeItem('randomID');
+sessionStorage.removeItem('userDatabaseName');
+ closeApp()
    db.close();
-   remoteStorage.displayWidget(false);
-   document.getElementById("myNavigator").popPage(object);
+   remoteStorage.displayWidget(false)
+
 
 
 

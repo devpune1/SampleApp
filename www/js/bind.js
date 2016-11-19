@@ -10,8 +10,8 @@ document.addEventListener('init', function(event) {
 
     page.querySelector('#register').onclick = function() {
 
-      sessionStorage.setItem("page","registration.html");
-
+      sessionStorage.setItem("CurrentPage","registration.html");
+      sessionStorage.clickcount = ( (sessionStorage.clickcount) + 1 );
       document.querySelector('#myNavigator').pushPage('registration.html', {data: {title: 'Register'}});
 
 
@@ -40,19 +40,97 @@ document.addEventListener('init', function(event) {
 });
 
 
+function checkRefresh(){
 
 
+  if (sessionStorage.clickcount ) {
 
-$(window).bind('load',function(){
-  var object = document.getElementById("myNavigator").topPage;
+var currentPage = sessionStorage.getItem("CurrentPage");
 
-if(!object || object == null){
-  console.log("login123123");
+if(currentPage == 'registration.html'){
+
+  document.getElementById("myNavigator").pushPage("registration.html",{data :{ title : "Login"}});
+
+}
+if(currentPage == 'login.html'){
+
   document.getElementById("myNavigator").pushPage("login.html",{data :{ title : "Login"}});
-
 
 }
 
+if(currentPage == 'mainmodule.html'){
+
+  document.getElementById("myNavigator").pushPage("mainmodule.html",{data :{ title : "Login"}});
+
+}
+
+
+
+ }
+ else
+ {
+   if(currentPage == 'login.html'){
+
+     document.getElementById("myNavigator").pushPage("login.html",{data :{ title : "Login"}});
+     sessionStorage.clickcount = 0;
+     sessionStorage.setItem("CurrentPage","login.html")
+
+
+   }
+else{
+      document.getElementById("myNavigator").pushPage("login.html",{data :{ title : "Login"}});
+      sessionStorage.clickcount = 0;
+      sessionStorage.setItem("CurrentPage","login.html")
+}
+
+
+ }
+
+}
+
+/*
+
+$(window).bind('load',function(){
+
+
+if(window.performance){
+
+var count = sessionStorage.getItem("count");
+
+
+    if(performance.navigation.type  == 1 ){
+
+
+              if(count == 1){
+
+
+
+                     document.getElementById("myNavigator").pushPage("login.html",{data :{ title : "Login"}});
+
+
+                }
+                else{
+
+                      var object = document.getElementById("myNavigator").topPage.data;
+
+                      document.getElementById("myNavigator").pushPage(object,{data :{ title : "Login"}});
+
+            }
+
+
+
+
+          }
+         else {
+
+                  document.getElementById("myNavigator").pushPage("login.html",{data :{ title : "Login"}});
+
+            }
+
+
+
+
+}
 
 });
 
@@ -63,12 +141,12 @@ $(window).bind('unload',function(){
 
 console.log("asdasd");
 
-var object = sessionStorage.getItem("page");
+var object = document.getElementById("myNavigator").topPage.data;
 
 
 if(object ){
 
-document.getElementById("myNavigator").pushPage(object, {data :{ title : "Register"}});
+//document.getElementById("myNavigator").setMainPage(object, {data :{ title : "Register"}});
 
 }
 else{
@@ -79,23 +157,13 @@ document.getElementById("myNavigator").pushPage("logint.html", {data :{ title : 
 
 });
 
+*/
 
 
 
 
 
 
-
-function closeApp(){
-
-
-  var object = document.getElementById("myNavigator").topPage.data;
-
-console.log( object)
-  document.getElementById("myNavigator").popPage(object);
-
-
-}
 
 function loadPage(){
 
@@ -199,7 +267,7 @@ if(name.length){
        if(validateCredential( userKey ,name)){
 
   //document.querySelector('#modal').show();
-     sessionStorage.setItem("page","mainmodule.html");
+     sessionStorage.setItem("CurrentPage","mainmodule.html");
    sessionStorage.setItem("randomID",generateHashKey(userPassword));
 
    sessionStorage.setItem("userDatabaseName",generateHashKey(userName));
@@ -343,6 +411,21 @@ catch(err) {
 
 
 
+
+
+
+}
+
+
+function closeApp(){
+
+  //var object = document.getElementById('myNavigator').topPage.data;
+
+//document.getElementById('myNavigator').popPage(object);
+
+sessionStorage.setItem('CurrentPage','login.html');
+sessionStorage.clickcount = 0;
+document.getElementById('myNavigator').pushPage('login.html',{data : {title : 'Login Page'} });
 
 
 
