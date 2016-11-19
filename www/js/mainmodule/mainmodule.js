@@ -789,9 +789,10 @@ function closeApplication(){
  document.getElementById('remotestorage-widget').style.display ='none';
 sessionStorage.removeItem('randomID');
 sessionStorage.removeItem('userDatabaseName');
- closeApp()
-   db.close();
-   remoteStorage.displayWidget(false)
+ closeApp();
+
+db.close();
+
 
 
 

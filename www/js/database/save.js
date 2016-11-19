@@ -1,3 +1,14 @@
+document.getElementById("save").addEventListener("click",function(){
+  saveRecords();
+});
+
+document.getElementById("close").addEventListener("click",function(){
+  closeApp();
+});
+
+
+
+
 
 
 function getData(className){
