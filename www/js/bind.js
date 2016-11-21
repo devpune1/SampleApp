@@ -24,10 +24,13 @@ document.getElementById('login').onclick = function() {
 
 
 function log(clickID){
-
+var count =0;
 
 
 if(clickID == "login"){
+
+
+console.log(  document.querySelector('#myNavigator').getPages())
 
  verifyDetails();
 
