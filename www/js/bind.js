@@ -11,14 +11,14 @@
 });
 */
 function setTop(){
-var value = 0;
+var value = 1;
 sessionStorage.top = value;
 
 }
 
 function incrementTop(){
 
-sessionStorage.top = sessionStorage.top++ ;
+sessionStorage.top = (sessionStorage.top + 1) ;
 
 }
 function loadEvents(){
@@ -48,9 +48,12 @@ if(clickID == "login"){
 }
 
 if(clickID == "register"){
-  incrementTop()
+
+  incrementTop();
+
     sessionStorage.setItem("CurrentPage","registration.html");
     sessionStorage.clickcount++;
+      incrementTop();
     document.querySelector('#myNavigator').pushPage('registration.html', {data: {title: 'Register'}});
     //console.log(app.navi.getPages().length);
 
@@ -492,8 +495,15 @@ catch(err) {
 }
 
 
-function closeApp(){
+function decreementTop(){
 
+sessionStorage.top = sessionStorage.top--;
+
+
+}
+
+function closeApp(){
+ decreementTop()
 //  var object = document.getElementById('myNavigator').topPage.data;
 
 //document.getElementById('myNavigator').popPage(object);
