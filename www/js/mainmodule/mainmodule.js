@@ -1,5 +1,13 @@
+ons.ready(function(){
 
+  var dataBaseName =  sessionStorage.getItem("userDatabaseName");
 
+if(dataBaseName){
+  defineUserModule();
+load( dataBaseName);
+}
+
+});
 
 
 
@@ -56,8 +64,6 @@ var dataBaseName =  sessionStorage.getItem("userDatabaseName");
     userObject = createDataObject(userData,userArray);
 
    userObject = createSensitiveEncryptedObject(userObject,userArray,userKey);
-
-
 
      dbObject.put('userData',userObject).done(function(){
        alert("done");

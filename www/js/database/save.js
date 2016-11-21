@@ -1,13 +1,20 @@
-document.getElementById("save").addEventListener("click",function(){
-  saveRecords();
-});
-
-document.getElementById("close").addEventListener("click",function(){
-  closeApp();
-});
 
 
+//document.getElementById('save').onclick(saveRecords());
 
+function register(clickID){
+
+
+  if(clickID == "save" ){
+
+     saveRecords();
+
+  }
+if(clickID == "close")
+
+closeApp();
+
+}
 
 
 
@@ -71,10 +78,9 @@ if(userData[5] === userData[6]) {
      clearInputs("registerinput");
 
 
-      document.querySelector('#myNavigator').pushPage('mainmodule.html', {data: {title: 'Main Application'}});
-
+            document.getElementById('remotestorage-widget').style.display ='block';
             sessionStorage.setItem("CurrentPage","mainmodule.html");
-         sessionStorage.clickcount++;
+            sessionStorage.clickcount++;
             sessionStorage.setItem("randomID",generateHashKey(userData[5]));
 
             sessionStorage.setItem("userDatabaseName",generateHashKey(userData[1]));
@@ -82,6 +88,7 @@ if(userData[5] === userData[6]) {
             defineUserModule();
 
             load(generateHashKey(userData[1]));
+            document.querySelector('#myNavigator').pushPage('mainmodule.html', {data: {title: 'Main Application'}});
 
     }
 else{

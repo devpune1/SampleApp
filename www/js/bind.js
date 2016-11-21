@@ -1,5 +1,51 @@
+/*document.addEventListener("onread", function(event) {
+  document.getElementById("save").addEventListener("click",function(){
+    saveRecords();
+  });
 
 
+
+  document.getElementById("close").addEventListener("click",function(){
+    closeApp();
+  });
+});
+*/
+function loadEvents(){
+
+document.getElementById('login').onclick = function() {
+
+    verifyDetails();
+
+ };
+
+
+
+}
+
+
+function log(clickID){
+
+
+
+if(clickID == "login"){
+
+ verifyDetails();
+
+}
+
+if(clickID == "register"){
+
+  sessionStorage.setItem("CurrentPage","registration.html");
+   sessionStorage.clickcount++;
+  document.querySelector('#myNavigator').pushPage('registration.html', {data: {title: 'Register'}});
+
+
+}
+
+
+}
+
+/*
 document.addEventListener('init', function(event) {
 
 
@@ -22,7 +68,7 @@ document.addEventListener('init', function(event) {
 
      page.querySelector('#login').onclick = function() {
 
-       verifyDetails();
+    //   verifyDetails();
 
     };
 
@@ -37,10 +83,15 @@ document.addEventListener('init', function(event) {
   }
 
 }
+
+
+
+
 });
 
-
+*/
 function checkRefresh(){
+
 
 
   if (sessionStorage.clickcount ) {
@@ -48,18 +99,18 @@ function checkRefresh(){
 var currentPage = sessionStorage.getItem("CurrentPage");
 
 if(currentPage == 'registration.html'){
-
+ //document.getElementById('remotestorage-widget').style.display ='none';
   document.getElementById("myNavigator").pushPage("registration.html",{data :{ title : "Login"}});
 
 }
 if(currentPage == 'login.html'){
-
+ //document.getElementById('remotestorage-widget').style.display ='none';
   document.getElementById("myNavigator").pushPage("login.html",{data :{ title : "Login"}});
 
 }
 
 if(currentPage == 'mainmodule.html'){
-
+ //document.getElementById('remotestorage-widget').style.display ='none';
   document.getElementById("myNavigator").pushPage("mainmodule.html",{data :{ title : "Login"}});
 
 }
@@ -71,6 +122,7 @@ if(currentPage == 'mainmodule.html'){
  {
    if(currentPage == 'login.html'){
 
+     document.getElementById('remotestorage-widget').style.display ='none';
      document.getElementById("myNavigator").pushPage("login.html",{data :{ title : "Login"}});
      sessionStorage.clickcount = 0;
      sessionStorage.setItem("CurrentPage","login.html")
@@ -78,6 +130,8 @@ if(currentPage == 'mainmodule.html'){
 
    }
 else{
+
+
       document.getElementById("myNavigator").pushPage("login.html",{data :{ title : "Login"}});
       sessionStorage.clickcount = 0;
       sessionStorage.setItem("CurrentPage","login.html")
@@ -85,6 +139,7 @@ else{
 
 
  }
+
 
 }
 
