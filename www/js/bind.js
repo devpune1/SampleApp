@@ -10,6 +10,17 @@
   });
 });
 */
+function setTop(){
+var value = 0;
+sessionStorage.top = value;
+
+}
+
+function incrementTop(){
+
+sessionStorage.top = sessionStorage.top++ ;
+
+}
 function loadEvents(){
 
 document.getElementById('login').onclick = function() {
@@ -25,23 +36,23 @@ document.getElementById('login').onclick = function() {
 
 function log(clickID){
 var count =0;
-
+var topOfStack =0;
 
 if(clickID == "login"){
 
 
-console.log(  document.querySelector('#myNavigator').getPages())
+//console.log(  document.querySelector('#myNavigator').getPages())
 
  verifyDetails();
 
 }
 
 if(clickID == "register"){
-
-  sessionStorage.setItem("CurrentPage","registration.html");
-   sessionStorage.clickcount++;
-  document.querySelector('#myNavigator').pushPage('registration.html', {data: {title: 'Register'}});
-
+  incrementTop()
+    sessionStorage.setItem("CurrentPage","registration.html");
+    sessionStorage.clickcount++;
+    document.querySelector('#myNavigator').pushPage('registration.html', {data: {title: 'Register'}});
+    //console.log(app.navi.getPages().length);
 
 }
 
@@ -102,17 +113,20 @@ function checkRefresh(){
 var currentPage = sessionStorage.getItem("CurrentPage");
 
 if(currentPage == 'registration.html'){
+  incrementTop()
  //document.getElementById('remotestorage-widget').style.display ='none';
   document.getElementById("myNavigator").pushPage("registration.html",{data :{ title : "Login"}});
 
 }
 if(currentPage == 'login.html'){
+  incrementTop()
  //document.getElementById('remotestorage-widget').style.display ='none';
   document.getElementById("myNavigator").pushPage("login.html",{data :{ title : "Login"}});
 
 }
 
 if(currentPage == 'mainmodule.html'){
+  incrementTop()
  //document.getElementById('remotestorage-widget').style.display ='none';
   document.getElementById("myNavigator").pushPage("mainmodule.html",{data :{ title : "Login"}});
 
@@ -124,8 +138,9 @@ if(currentPage == 'mainmodule.html'){
  else
  {
    if(currentPage == 'login.html'){
-
-     document.getElementById('remotestorage-widget').style.display ='none';
+     setTop();
+     incrementTop();
+    // document.getElementById('remotestorage-widget').style.display ='none';
      document.getElementById("myNavigator").pushPage("login.html",{data :{ title : "Login"}});
      sessionStorage.clickcount = 0;
      sessionStorage.setItem("CurrentPage","login.html")
@@ -134,7 +149,8 @@ if(currentPage == 'mainmodule.html'){
    }
 else{
 
-
+  setTop();
+  incrementTop();
       document.getElementById("myNavigator").pushPage("login.html",{data :{ title : "Login"}});
       sessionStorage.clickcount = 0;
       sessionStorage.setItem("CurrentPage","login.html")
@@ -255,6 +271,7 @@ function reloadPage(){
 
 function verifyDetails(){
 
+incrementTop()
 
  var userData = [] ;
  var userKey = "" ;
@@ -477,7 +494,7 @@ catch(err) {
 
 function closeApp(){
 
-  //var object = document.getElementById('myNavigator').topPage.data;
+//  var object = document.getElementById('myNavigator').topPage.data;
 
 //document.getElementById('myNavigator').popPage(object);
 
