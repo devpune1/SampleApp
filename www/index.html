@@ -4,11 +4,11 @@
   <head>
     <meta charset="utf-8">
 
-        <script src="../js/DataTable/jquery.js"></script>
-<linl rel="stylesheet" href="/js/Jquery/jquery-ui.theme.css"></link>
-<linl rel="stylesheet" href="/js/Jquery/jquery-ui.css"></link>
-          <script src="/js/Jquery/jquery-ui.min.js"></script>
-    <script src="/js/Jquery/jquery-ui.min.js"></script>
+          <script src="../js/DataTable/jquery.js"></script>
+          <link rel="stylesheet" href="/js/Jquery/jquery-ui.theme.css"></link>
+           <link rel="stylesheet" href="/js/Jquery/jquery-ui.css"></link>
+            <script src="/js/Jquery/jquery-ui.min.js"></script>
+            <script src="/js/Jquery/jquery-ui.min.js"></script>
 
 
         <script src="../js/validation.js"></script>
@@ -61,7 +61,7 @@
 
   <body onload="checkRefresh()">
 
-  <ons-navigator id ="myNavigator" var="app.navi"> </ons-navigator>
+  <ons-navigator id ="myNavigator" var="app.navi"  > </ons-navigator>
 
 <ons-template id="login.html">
 
@@ -85,7 +85,12 @@
 
           <p><ons-button  id="login"  onclick="log(this.id)">Sign-In</ons-button>
 
-          <ons-button id="register"   onclick="log(this.id)">Sign-Up</ons-button></p>
+          <ons-button id="register"   onclick="log(this.id)">Sign-Up</ons-button>
+
+          <ons-button type="button"  modifier="normal"  id="close"  onclick = "popStack()">pop</ons-button>
+      </p>
+
+        </p>
 </form>
 
 
@@ -146,9 +151,10 @@
   <p>
 
     <ons-button type="submit"  modifier="normal"  id="save"  onclick = "register(this.id)">Save</ons-button>
-
     <ons-button type="button"  modifier="normal"  id="close"  onclick = "register(this.id)">Close</ons-button>
-</p>
+  <ons-button type="button"  modifier="normal"  id="close"  onclick = "popStack()">pop</ons-button>
+
+  </p>
 
  <form>
  </div>

@@ -54,7 +54,10 @@ if(clickID == "register"){
     sessionStorage.setItem("CurrentPage","registration.html");
     sessionStorage.clickcount++;
       incrementTop();
+
     document.querySelector('#myNavigator').pushPage('registration.html', {data: {title: 'Register'}});
+
+
     //console.log(app.navi.getPages().length);
 
 }
@@ -117,21 +120,21 @@ var currentPage = sessionStorage.getItem("CurrentPage");
 
 if(currentPage == 'registration.html'){
   incrementTop()
- //document.getElementById('remotestorage-widget').style.display ='none';
-  document.getElementById("myNavigator").pushPage("registration.html",{data :{ title : "Login"}});
+
+  document.getElementById("myNavigator").resetToPage("registration.html",{data: {title: 'Register'}});
 
 }
 if(currentPage == 'login.html'){
   incrementTop()
  //document.getElementById('remotestorage-widget').style.display ='none';
-  document.getElementById("myNavigator").pushPage("login.html",{data :{ title : "Login"}});
+  document.getElementById("myNavigator").resetToPage("login.html",{data: {title: 'Login'}});
 
 }
 
 if(currentPage == 'mainmodule.html'){
   incrementTop()
- //document.getElementById('remotestorage-widget').style.display ='none';
-  document.getElementById("myNavigator").pushPage("mainmodule.html",{data :{ title : "Login"}});
+
+   document.getElementById("myNavigator").resetToPage( "mainmodule.html",{data: {title: 'MainModule'}});
 
 }
 
@@ -144,7 +147,7 @@ if(currentPage == 'mainmodule.html'){
      setTop();
      incrementTop();
     // document.getElementById('remotestorage-widget').style.display ='none';
-     document.getElementById("myNavigator").pushPage("login.html",{data :{ title : "Login"}});
+     document.getElementById("myNavigator").resetToPage("login.html",{data :{ title : "Login"}});
      sessionStorage.clickcount = 0;
      sessionStorage.setItem("CurrentPage","login.html")
 
@@ -154,7 +157,7 @@ else{
 
   setTop();
   incrementTop();
-      document.getElementById("myNavigator").pushPage("login.html",{data :{ title : "Login"}});
+      document.getElementById("myNavigator").resetToPage("login.html",{data :{ title : "Login"}});
       sessionStorage.clickcount = 0;
       sessionStorage.setItem("CurrentPage","login.html")
 }
@@ -292,11 +295,11 @@ var count = 0;
 
 var decryptedName = "";
 
-var    userData = "";
+var userData = "";
 
 var name ="";
 
-  var text= ["User ID ","User Password"];
+var text= ["User ID ","User Password"];
 
 
 
@@ -503,15 +506,70 @@ sessionStorage.top = sessionStorage.top--;
 }
 
 function closeApp(){
+
  decreementTop()
-//  var object = document.getElementById('myNavigator').topPage.data;
 
-//document.getElementById('myNavigator').popPage(object);
+popStack();
 
-sessionStorage.setItem('CurrentPage','login.html');
-sessionStorage.clickcount = 0;
-document.getElementById('myNavigator').pushPage('login.html',{data : {title : 'Login Page'} });
+console.log("Deleted"+checkTopStack());
 
+ if(!checkTopStack()){
+
+
+
+   sessionStorage.setItem('CurrentPage','login.html');
+   sessionStorage.clickcount = 0;
+   document.getElementById('myNavigator').replacePage('login.html',{data : {title : 'Login Page'} });
+
+
+ }
+
+}
+
+
+
+function popStack(){
+
+try{
+
+
+          var object = document.getElementById('myNavigator').topPage.data;
+            console.log(object.title);
+
+            if(object.title){
+                  console.log("inside" );
+                  document.getElementById('myNavigator').popPage(object);
+
+              }
+    }
+     catch(e){
+
+
+          console.log(e);
+
+}
+
+
+
+}
+
+
+
+function checkTopStack(){
+
+  var object = document.getElementById('myNavigator').topPage.data;
+
+console.log(object.title)
+
+if(object.title){
+
+            return false;
+
+}else{
+
+
+return true;
+}
 
 
 }
