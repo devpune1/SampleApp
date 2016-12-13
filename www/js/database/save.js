@@ -5,6 +5,8 @@
 function register(clickID){
 
 
+
+
   if(clickID == "save" ){
 
      saveRecords();
@@ -78,16 +80,17 @@ if(userData[5] === userData[6]) {
      clearInputs("registerinput");
 
 
-            document.getElementById('remotestorage-widget').style.display ='block';
+
             sessionStorage.setItem("CurrentPage","mainmodule.html");
             sessionStorage.clickcount++;
             sessionStorage.setItem("randomID",generateHashKey(userData[5]));
 
             sessionStorage.setItem("userDatabaseName",generateHashKey(userData[1]));
 
-            defineUserModule();
 
-            load(generateHashKey(userData[1]));
+
+            loadRemoteStorageData();
+
             document.querySelector('#myNavigator').pushPage('mainmodule.html', {data: {title: 'Main Application'}});
 
     }

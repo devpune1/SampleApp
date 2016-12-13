@@ -17,7 +17,7 @@
 
  <form id="testingforms" data-parsley-validate="" >
 
- <p><ons-input id="userName" class="registerinput " modifier="underbar" type="text" placeholder="User Name"  required=""></ons-input>
+ <p><ons-input id="userName" class="registerinput " modifier="underbar" type="text" placeholder="User Full Name"  required=""></ons-input>
  <span class="loginError" style="display:none;"></span>
  </p>
 
@@ -36,17 +36,16 @@
 
  <p><ons-input  id="userDate" class="registerinput " modifier="underbar" type="date" placeholder="User Birth Date" ></ons-input> <span class="loginError" style="display:none;"></span></p>
 
- <p><ons-input  id="userPassword" class="registerinput" modifier="underbar" type="text" placeholder="User Password"  ></ons-input> <span class="loginError" style="display:none;"></span></p>
+  <p><ons-input  id="userPassword" class="registerinput" modifier="underbar" type="password" placeholder="User Password"  ></ons-input> <span class="loginError" style="display:none;"></span> </p>
 
- <p><ons-input  id="userConfirmPassword" class="registerinput" modifier="underbar" type="text" placeholder="User ConfirmPassword" ></ons-input> <span class="loginError" style="display:none;"></span></p>
+  <p><ons-input  id="userConfirmPassword" class="registerinput" modifier="underbar" type="password" placeholder="User ConfirmPassword" ></ons-input> <span class="loginError" style="display:none;"></span></p>
 
 
   <p>
 
- <ons-button type="submit"  modifier="normal"  id="save"  onclick = "register(this.id)">Save</ons-button>
+ <ons-button type="submit"  modifier="normal"  id="save"  onclick = "register(this.id)">Register</ons-button>
 
  <ons-button type="button"  modifier="normal"  id="close"  onclick = "register(this.id)">Close</ons-button>
-  <ons-button type="button"  modifier="normal"  id="close"  onclick = "popStack()">pop</ons-button>
 </p>
 
  <form>

@@ -255,7 +255,7 @@ function getConnectionObject(db_name){
 
 
 
-var db = new ydn.db.Storage(db_name,schema);
+var db = new ydn.db.Storage(db_name,schema,{mechanisms: ['indexedDb']});
 
     return db;
 

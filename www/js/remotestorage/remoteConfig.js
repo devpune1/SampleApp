@@ -1,28 +1,40 @@
+function loadRemoteStorageData(){
 
 
-function load(userDatabaseName) {
+     var userProfile = sessionStorage.getItem('userDatabaseName');
+     var db = getConnectionObject(userProfile);
+     var userFolderName = "UserRecords";
 
-  console.log(userDatabaseName);
+     RemoteStorage.config.changeEvents.window = false;
 
-RemoteStorage.config.changeEvents.window = false;
 
-// Claim read/write access for the /myfavoritedrinks category
-remoteStorage.access.claim('bicService','rw');
+    remoteStorage.access.claim('bicnSystCorp','rw');
 
-// Display the RS connect widget
-remoteStorage.displayWidget();
 
-remoteStorage.bicService.init();
+    remoteStorage.displayWidget();
 
-remoteStorage.bicService.getAllData().then(function(transactions){
-
-//clearRemoteStorage();
-for(var id in transactions){
+    remoteStorage.bicnSystCorp.init(userFolderName+"/"+userProfile);
 
 
 
-     //clearRemoteStorage(transactions[id].date);
-    removeDuplicate(transactions[id],userDatabaseName);
+   remoteStorage.bicnSystCorp.getUserData('Data').then(function(userData){
+
+
+        for(var items in userData){
+
+
+             removeDuplicate(userData[items]);
+
+
+
+        }
+
+clearRemoteStorage();
+
+
+    });
+
+
 
 
 
@@ -30,63 +42,38 @@ for(var id in transactions){
 }
 
 
+    function removeDuplicate(object){
 
-});
+   console.log(   "1");
 
-}
-
-
-function removeDuplicate(object,userDatabaseName){
-
-
-    var numberOfItem = null;
-  var userDataObject = {};
+  var numberOfItem = null;
+  var userData = {};
   var flag = false;
   var userEncryptionKey = null;
   var count = 0;
-  var countArray = [] ;
-  var userName = [];
-  var dataItem = [];
 
-  var dataSource = [];
-   var userArray = getInputId();
+ console.log(   "2");
 
-console.log(userDatabaseName);
-
- var db =  getConnectionObject(userDatabaseName);
-
-if(object !== true){
+ var db = getConnectionObject(sessionStorage.getItem('userDatabaseName'));
 
 
  db.executeSql('SELECT * FROM  userData').then (function(results) {
 
+
  if(results.length){
 
- userEncryptionKey =  sessionStorage.getItem("randomID") ;
 
         for(numberOfItem = 0 ; numberOfItem < results.length ; numberOfItem++) {
 
+                  userData  = results[numberOfItem];
 
-                console.log("value ="+object);
-
-                console.log(object);
-
-
-
-                  userDataObject  = results[numberOfItem];
-
-
-
-
-
-if(generateHashKey(userDataObject.userinfo) !== generateHashKey(object.userinfo)){
-
+                    if((userData.userinfo) !==  (object.userinfo)){
 
                              count = count + 1;
 
 
-}
-else {
+                    }
+                    else{
 
 
                         count = 0;
@@ -103,31 +90,29 @@ else {
            if(count){
 
 
+                         db.put('userData',object).done(function(x) {
 
-                  db.put('userData',userDataObject).done(function(){
 
-                   });
+                             });
 
 
            }
 
-
-
-
  }
+
  else{
 
 
 
-  db.put('userData',object).done(function(){
-
-    console.log("entered");
-
-   });
+                         db.put('userData',object).done(function(x) {
 
 
+                             });
 
-}
+
+ }
+
+
 
 }, function(e) {
 
@@ -136,28 +121,40 @@ else {
 
 });
 
-}
-
- }
 
 
-
-
-    function clearRemoteStorage(){
-
-      remoteStorage.bicService.getAllData().then(function(transactions){
-
-      for(var id in transactions){
-
-          if(transactions[id]){
-
-                remoteStorage.bicService.removeUserData(transactions[id].date);
-
-          }
-
-        }
-      });
 
     }
 
-    //document.getElementById("clearremotestorage").addEventListener("click", clearRemoteStorage);
+
+
+
+    function convertJsonToObject(userdata){
+
+        var object = "";
+
+        object = JSON.parse(userdata) ;
+
+
+        return object;
+
+
+    }
+
+
+
+
+
+function clearRemoteStorage(){
+
+
+
+remoteStorage.bicnSystCorp.getUserData('Database').then(function(userData){
+
+
+reloadTable();
+
+
+});
+
+}

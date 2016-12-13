@@ -1,13 +1,4 @@
-ons.ready(function(){
 
-  var dataBaseName =  sessionStorage.getItem("userDatabaseName");
-
-if(dataBaseName){
-  defineUserModule();
-load( dataBaseName);
-}
-
-});
 
 
 
@@ -66,11 +57,11 @@ var dataBaseName =  sessionStorage.getItem("userDatabaseName");
    userObject = createSensitiveEncryptedObject(userObject,userArray,userKey);
 
      dbObject.put('userData',userObject).done(function(){
-       alert("done");
+
 
      });
 
-    remoteStorage.bicService.addUserData(userObject.date,userObject);
+    remoteStorage.bicnSystCorp.addUserData('Data',userObject.date,userObject);
 
      reloadTable();
     clearInputs("userinput");
@@ -759,7 +750,7 @@ function deleteData(objectKey) {
 
 
 
-                       remoteStorage.bicService.removeUserData(objectKey);
+                       remoteStorage.bicnSystCorp.removeUserData(objectKey);
 
                       deleteRecord("userData",objectKey);
 
@@ -792,7 +783,7 @@ function closeApplication(){
 
  //document.getElementById('myNavigator').popPage(object);
 
- document.getElementById('remotestorage-widget').style.display ='none';
+ //document.getElementById('remotestorage-widget').style.display ='none';
 sessionStorage.removeItem('randomID');
 sessionStorage.removeItem('userDatabaseName');
  closeApp();

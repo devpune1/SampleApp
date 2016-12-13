@@ -1,28 +1,33 @@
 
 
-function defineUserModule(){
 
 
-RemoteStorage.defineModule('bicService', function(privateClient) {
 
-  privateClient.declareType('data', {
+/* Creating remote storage module where we define data type,descriptio,type which tell s type of data added and also define  fucntion */
+
+
+RemoteStorage.defineModule('bicnSystCorp', function(privateClient) {
+
+  privateClient.declareType('Data', {
 
     type: 'object',
     description : 'User Data',
     properties: {
 
-    userinfo: { type: 'string' },
+
+
+      userinfo : { type : 'string'},
 
       website: { type:'string' },
 
-      hint: { type: 'string' }
+      hint: { type: 'string' },
 
-
+     date : {type : 'number'}
 
 
     },
 
-    required: ['userinfo','website','hint']
+    required: ['userinfo']
 
   });
 
@@ -31,25 +36,28 @@ RemoteStorage.defineModule('bicService', function(privateClient) {
 
     exports: {
 
+         profile : null,
 
-      init: function() {
+      init: function(profile) {
 
 
        privateClient.cache('');
 
+        this.profile = profile;
 
+    console.log(profile)
 
       },
 
       on: privateClient.on,
 
-      addUserData: function(Id,userData) {
+      addUserData: function(type,Id,userData) {
 
-        Id = Id.toString().replace(/\s|\//g, '-');
+        var Id = Id.toString().replace(/\s|\//g, '-');
 
 
 
-        return privateClient.storeObject('data',Id,userData);
+        return privateClient.storeObject('Data',this.profile + '/'+Id,userData);
 
 
       },
@@ -59,7 +67,7 @@ RemoteStorage.defineModule('bicService', function(privateClient) {
 
        userId = userId.toString().replace(/\s|\//g, '-');
 
-         return privateClient.storeObject('data',userId,userData);
+         return privateClient.storeObject('Data',this.profile+"/"+userId,userData);
 
       },
 
@@ -69,12 +77,12 @@ RemoteStorage.defineModule('bicService', function(privateClient) {
 
 
 
-          return  privateClient.remove(userId);
+          return  privateClient.remove(this.profile+"/"+userId);
       },
 
-      getAllData: function() {
+      getUserData: function() {
 
-        return privateClient.getAll('');
+        return privateClient.getAll(this.profile + '/' );
 
       },
 
@@ -82,9 +90,9 @@ RemoteStorage.defineModule('bicService', function(privateClient) {
      getById: function(obj) {
 
 
-     obj = obj.toString().replace(/\s|\//g, '-');
+             obj = obj.toString().replace(/\s|\//g, '-');
 
-              return privateClient.getObject(obj);
+              return privateClient.getObject(this.profile+"/"+obj);
 
                 }
 
@@ -95,4 +103,3 @@ RemoteStorage.defineModule('bicService', function(privateClient) {
   };
 
 });
-}

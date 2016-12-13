@@ -114,26 +114,25 @@ function checkRefresh(){
 
 
 
-  if (sessionStorage.clickcount ) {
+  if (sessionStorage.clickcount) {
 
 var currentPage = sessionStorage.getItem("CurrentPage");
 
 if(currentPage == 'registration.html'){
-  incrementTop()
+
 
   document.getElementById("myNavigator").resetToPage("registration.html",{data: {title: 'Register'}});
 
 }
 if(currentPage == 'login.html'){
-  incrementTop()
+
  //document.getElementById('remotestorage-widget').style.display ='none';
   document.getElementById("myNavigator").resetToPage("login.html",{data: {title: 'Login'}});
 
 }
 
 if(currentPage == 'mainmodule.html'){
-  incrementTop()
-
+  loadRemoteStorageData();
    document.getElementById("myNavigator").resetToPage( "mainmodule.html",{data: {title: 'MainModule'}});
 
 }
@@ -144,8 +143,7 @@ if(currentPage == 'mainmodule.html'){
  else
  {
    if(currentPage == 'login.html'){
-     setTop();
-     incrementTop();
+
     // document.getElementById('remotestorage-widget').style.display ='none';
      document.getElementById("myNavigator").resetToPage("login.html",{data :{ title : "Login"}});
      sessionStorage.clickcount = 0;
@@ -155,8 +153,7 @@ if(currentPage == 'mainmodule.html'){
    }
 else{
 
-  setTop();
-  incrementTop();
+
       document.getElementById("myNavigator").resetToPage("login.html",{data :{ title : "Login"}});
       sessionStorage.clickcount = 0;
       sessionStorage.setItem("CurrentPage","login.html")
@@ -353,9 +350,9 @@ if(name.length){
 
    sessionStorage.setItem("userDatabaseName",generateHashKey(userName));
 
-   defineUserModule();
 
-   load(generateHashKey(userName));
+
+  loadRemoteStorageData();
 
 
        document.querySelector('#myNavigator').pushPage('mainmodule.html', {data: {title: 'Main Application'}});
