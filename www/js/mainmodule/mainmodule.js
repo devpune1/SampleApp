@@ -783,7 +783,7 @@ function closeApplication(){
 
  //document.getElementById('myNavigator').popPage(object);
 
- //document.getElementById('remotestorage-widget').style.display ='none';
+document.getElementById('remotestorage-widget').style.display ='none';
 sessionStorage.removeItem('randomID');
 sessionStorage.removeItem('userDatabaseName');
  closeApp();
